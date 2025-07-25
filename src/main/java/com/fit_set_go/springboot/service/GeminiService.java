@@ -25,11 +25,9 @@ public class GeminiService {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        // ❌ Don't set Authorization header for MakerSuite API key
 
         HttpEntity<Map<String, Object>> entity = new HttpEntity<>(request, headers);
 
-        // ✅ Append API key as query param
         String fullUrl = apiUrl + "?key=" + apiKey;
 
         RestTemplate restTemplate = new RestTemplate();

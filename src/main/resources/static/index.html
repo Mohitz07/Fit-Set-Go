@@ -8,7 +8,7 @@
 <body>
 <div class="wrapper">
   <div class="card">
-    <h2>Fit Meal Planner</h2>
+    <h2>Fit Set Go</h2>
     <p class="subtitle">Calculate your calories and get personalized meal plans</p>
     <form id="form">
       <div class="form-row">
@@ -58,17 +58,40 @@
       </div>
 
       <div class="form-row radio-group">
-        <span class="diet-label">Diet Preference</span>
-        <label class="radio"><input type="radio" name="diet" value="VEG" checked /> Vegetarian</label>
-        <label class="radio"><input type="radio" name="diet" value="NONVEG" /> Non-Vegetarian</label>
+        <fieldset class="diet-group">
+          <legend>Diet Preference</legend>
+          <label class="radio">
+            <input type="radio" name="diet" value="VEG" checked />
+            Veg
+          </label>
+          <br>
+          <label class="radio">
+            <input type="radio" name="diet" value="NONVEG" />
+            Non-Veg
+          </label>
+        </fieldset>
+        <label>
+          Custom Diet Preferences (optional)
+          <input type="text" id="custom-diet" placeholder="e.g. I Don't eat Non-Veg on Tuesday and Saturday" />
+        </label>
       </div>
+<!--      <div class="form-row">-->
+<!--        <label>-->
+<!--          Custom Diet Preferences (optional)-->
+<!--          <input type="text" id="custom-diet" placeholder="e.g. I Don't eat Non-Veg on Tuesday and Saturday" />-->
+<!--        </label>-->
+<!--      </div>-->
 
       <button type="submit" class="primary-btn">Calculate Calories</button>
+
     </form>
 
     <p id="calories" class="result-text"></p>
-    <div id="gemini-result" class="gemini-text"></div>
+    <p id="loading" style="color: #888; font-style: italic; display: none; text-align: center">Generating your meal plan...</p>
     <button id="pdfBtn" class="primary-btn" style="display: none;">Download Meal Plan PDF</button>
+    <div id="gemini-result" class="gemini-text"></div>
+
+
   </div>
 </div>
 

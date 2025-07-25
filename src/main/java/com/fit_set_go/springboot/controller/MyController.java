@@ -20,16 +20,5 @@ public class MyController {
     public double calculate(@RequestBody UserInput input) {
         return calService.target(input);
     }
-
-    @PostMapping("/mealplan/pdf")
-    public ResponseEntity<byte[]> mealPlanPdf(@RequestBody UserInput input) {
-        int target = (int)Math.round(calService.target(input));
-        MealPlan plan = mealService.generate(input, target);
-        byte[] pdf = mealService.toPdf(plan);
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=mealplan.pdf")
-                .contentType(MediaType.APPLICATION_PDF)
-                .body(pdf);
-    }
 }
 

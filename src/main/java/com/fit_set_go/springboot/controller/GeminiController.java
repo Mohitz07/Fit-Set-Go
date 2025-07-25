@@ -1,6 +1,9 @@
 package com.fit_set_go.springboot.controller;
 
 import com.fit_set_go.springboot.service.GeminiService;
+import com.fit_set_go.springboot.service.MealPlanService;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,9 +15,10 @@ import java.util.Map;
 public class GeminiController {
 
     private final GeminiService geminiService;
-
-    public GeminiController(GeminiService geminiService) {
+    private final MealPlanService mealPlanService;
+    public GeminiController(GeminiService geminiService, MealPlanService mealPlanService) {
         this.geminiService = geminiService;
+        this.mealPlanService = mealPlanService;
     }
 
     @PostMapping("/generate")
@@ -31,5 +35,19 @@ public class GeminiController {
             return ResponseEntity.status(500).body("Error: " + e.getMessage());
         }
     }
+    @PostMapping("/pdf")
+    public ResponseEntity<byte[]> generateGeminiPdf(@RequestBody Map<String, String> body) {
+        String text = body.get("text");
+        if (text == null || text.isEmpty()) {
+            return ResponseEntity.badRequest().body(null);
+        }
+        byte[] pdf = mealPlanService.plainTextToPdf(text);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=Fit-Set-Go-meal-plan.pdf")
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(pdf);
+    }
+
+
 }
 

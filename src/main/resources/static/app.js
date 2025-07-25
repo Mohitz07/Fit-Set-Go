@@ -7,13 +7,21 @@ const weight = document.getElementById('weight');
 const sex = document.getElementById('sex');
 const activity = document.getElementById('activity');
 const goal = document.getElementById('goal');
+const customDiet = document.getElementById('custom-diet');
+const loadingText = document.getElementById('loading');
 
 const calories = document.getElementById('calories');
 const pdfBtn = document.getElementById('pdfBtn');
 const geminiResultDiv = document.getElementById('gemini-result');
 
 document.getElementById('form').addEventListener('submit', async e => {
-  e.preventDefault(); // Prevent page reload
+  e.preventDefault();
+
+    // Show loading message
+  loadingText.style.display = 'block';
+  calories.textContent = '';
+  geminiResultDiv.textContent = '';
+  pdfBtn.style.display = 'none';
 
   const selectedDiet = document.querySelector('input[name="diet"]:checked');
   const dietValue = selectedDiet ? selectedDiet.value : null;
@@ -29,7 +37,7 @@ document.getElementById('form').addEventListener('submit', async e => {
   };
 
   try {
-    // 1. Calculate calories from backend
+    // 1. Calculate calories
     const res = await fetch(`${api}/calculate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -39,55 +47,51 @@ document.getElementById('form').addEventListener('submit', async e => {
     if (!res.ok) throw new Error('Calorie calculation failed');
     const target = await res.json();
 
-    const dietReadable = data.diet === 'VEG' ? 'Vegetarian' : 'Non-Vegetarian';
+    const dietReadable = data.diet === 'VEG' ? 'Veg' : 'Veg and Non-Veg';
     calories.textContent = `Your target: ${Math.round(target)} kcal/day (${dietReadable})`;
 
-    pdfBtn.style.display = 'inline-block';
-    pdfBtn.onclick = () => downloadPdf(data);
+    // 2. Create prompt for Gemini
+    const prompt = `You are a fitness and nutrition expert. Based on the users profile, generate a Monday to Sunday meal plan that fits the calorie target and dietary preferences.
+    Start directly with the day. Do not include any introduction or extra lines above the meal plan.
 
-    // 2. Generate prompt for Gemini
-    const prompt = `
-    You are a fitness and nutrition expert. Based on the users profile, generate a full-day meal plan that fits the calorie target and dietary preferences.
+Instructions:
+- Provide 3 meals ((Bold text)(Breakfast, Lunch, Dinner)) and 2 snacks.
+- Mention each meals name, estimated calories, protein, carbs, and fat.
+- Mention ingredients
+- Keep it simple and culturally relevant to Indian food if possible.
 
-    User Profile:
-    - Age: ${data.age}
-    - Sex: ${data.sex}
-    - Height: ${data.heightCm} cm
-    - Weight: ${data.weightKg} kg
-    - Activity Level: ${data.activityFactor}
-    - Fitness Goal: ${data.goal}
-    - Dietary Preference: ${data.diet}
-    - Target Calories: ${Math.round(target)} kcal
+User Profile:
+- Age: ${data.age}
+- Sex: ${data.sex}
+- Height: ${data.heightCm} cm
+- Weight: ${data.weightKg} kg
+- Activity Level: ${data.activityFactor}
+- Fitness Goal: ${data.goal}
+- Dietary Preference: ${data.diet}
+- Custom Dietary Preference: ${data.diet}${customDiet.value ? `, ${customDiet.value}` : ''}
+- Target Calories: ${Math.round(target)} kcal
 
-    Instructions:
-    - Provide 3 meals (Breakfast, Lunch, Dinner) and 2 snacks.
-    - Mention each meal's name, ingredients, estimated calories, protein, carbs, and fat.
-    - Keep it simple and culturally relevant to Indian food if possible.
-    - Use markdown-style formatting.
+Example Format:
+    Breakfast
+  Paneer Paratha with Curd
+  Calories: 400 kcal | Protein: 20g | Carbs: 35g | Fat: 18g`;
 
-    Output Format Example:
-
-    ** Breakfast **
-    - * Paneer Paratha with Curd *
-    - Calories: 400 kcal | Protein: 20g | Carbs: 35g | Fat: 18g
-
-    ** Snack 1 **
-    - ...
-
-    Ensure the total daily calories match the target.
-    `;
-
-
+    // 3. Call Gemini
     const geminiRes = await fetch(`${geminiApi}/generate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ prompt })
     });
 
-    if (!geminiRes.ok) throw new Error('Gemini API failed');
+    if (!geminiRes.ok) throw new Error('API failed');
     const geminiText = await geminiRes.text();
 
     geminiResultDiv.textContent = geminiText;
+
+    // 4. Show Gemini PDF download button
+    pdfBtn.style.display = 'inline-block';
+    pdfBtn.onclick = () => downloadGeminiPdf(geminiText);
+
   } catch (err) {
     console.error(err);
     calories.textContent = 'An error occurred. Please try again.';
@@ -96,20 +100,19 @@ document.getElementById('form').addEventListener('submit', async e => {
   }
 });
 
-async function downloadPdf(payload) {
+async function downloadGeminiPdf(text) {
   try {
-    const res = await fetch(`${api}/mealplan/pdf`, {
+    const res = await fetch(`${geminiApi}/pdf`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify({ text })
     });
-
     if (!res.ok) throw new Error('PDF download failed');
     const blob = await res.blob();
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'mealplan.pdf';
+    a.download = 'Fit-Set-Go-meal-plan.pdf';
     a.click();
     window.URL.revokeObjectURL(url);
   } catch (err) {

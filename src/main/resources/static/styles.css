@@ -124,3 +124,31 @@ input:focus, select:focus {
   font-size: 0.95rem;
 
 }
+.diet-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.2rem;
+}
+
+.diet-group {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.radio-options {
+  display: flex;
+  gap: 1rem;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #c4cbcf;
+  font-size: 1rem;
+}
+
+
