@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fit Meal Planner</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="wrapper">
+  <div class="card">
+    <h2>Fit Meal Planner</h2>
+    <p class="subtitle">Calculate your calories and get personalized meal plans</p>
+    <form id="form">
+      <div class="form-row">
+        <label>
+          Age (years)
+          <input type="number" id="age" placeholder="e.g. 25" min="10" max="120" required />
+        </label>
+        <label>
+          Height (cm)
+          <input type="number" id="height" placeholder="e.g. 170" min="50" max="300" required />
+        </label>
+        <label>
+          Weight (kg)
+          <input type="number" id="weight" placeholder="e.g. 70" min="20" max="500" required />
+        </label>
+      </div>
+
+      <div class="form-row">
+        <label>
+          Sex
+          <select id="sex" required>
+            <option value="">Select sex</option>
+            <option value="MALE">Male</option>
+            <option value="FEMALE">Female</option>
+          </select>
+        </label>
+        <label>
+          Activity Level
+          <select id="activity" required>
+            <option value="">Select activity level</option>
+            <option value="1.2">Sedentary (office job)</option>
+            <option value="1.375">Light (light exercise 1-3 days/week)</option>
+            <option value="1.55">Moderate (moderate exercise 3-5 days/week)</option>
+            <option value="1.725">Active (hard exercise 6-7 days/week)</option>
+            <option value="1.9">Very Active (physical job + exercise)</option>
+          </select>
+        </label>
+        <label>
+          Goal
+          <select id="goal" required>
+            <option value="">Select goal</option>
+            <option value="MAINTAIN">Maintain</option>
+            <option value="LOSE">Lose Weight</option>
+            <option value="GAIN">Gain Weight</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="form-row radio-group">
+        <span class="diet-label">Diet Preference</span>
+        <label class="radio"><input type="radio" name="diet" value="VEG" checked /> Vegetarian</label>
+        <label class="radio"><input type="radio" name="diet" value="NONVEG" /> Non-Vegetarian</label>
+      </div>
+
+      <button type="submit" class="primary-btn">Calculate Calories</button>
+    </form>
+
+    <p id="calories" class="result-text"></p>
+    <div id="gemini-result" class="gemini-text"></div>
+    <button id="pdfBtn" class="primary-btn" style="display: none;">Download Meal Plan PDF</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

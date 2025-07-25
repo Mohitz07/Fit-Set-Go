@@ -1,0 +1,126 @@
+body {
+  background: #181c23;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  color: #e7e9ec;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.card {
+  background: #232832;
+  padding: 2rem 2.5rem;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  max-width: 1000px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #4eb5f1;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1rem;
+  text-align: center;
+  margin: 0.5rem 0 2rem;
+  color: #9aadbe;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 30%;
+  font-size: 0.95rem;
+  color: #c4cbcf;
+}
+
+input, select {
+  margin-top: 0.45rem;
+  padding: 0.7rem;
+  border: 1px solid #38404f;
+  border-radius: 8px;
+  background: #293040;
+  color: #e7e9ec;
+  font-size: 1rem;
+}
+
+input:focus, select:focus {
+  outline: 2px solid #63bcff;
+  border-color: #4eb5f1;
+}
+
+.radio-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.diet-label {
+  font-weight: bold;
+  color: #c4cbcf;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  color: #c4cbcf;
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 0.85rem 0;
+  background: linear-gradient(to right, #4eb5f1, #2e9ad1);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.primary-btn:hover {
+  background: linear-gradient(to right, #2e9ad1, #4eb5f1);
+  transform: translateY(-2px) scale(1.01);
+}
+
+.result-text {
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #d4e1f4;
+  text-align: center;
+}
+
+.gemini-text {
+  margin-top: 1.2rem;
+  white-space: pre-wrap;
+  font-style: italic;
+  color: #ffffff;
+  font-size: 0.95rem;
+
+}
