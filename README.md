@@ -18,13 +18,14 @@ Pdf format
 - Exports the meal plan into a downloadable PDF
 - Supports both Veg and Non-Veg preferences (with custom dietary restrictions)
 - Clean, responsive dark-themed UI
+- Dockerized for easy deployment
 
 ---
 
 ## Tech Stack
 
 - **Frontend**: HTML, CSS, JavaScript
-- **Backend**: Node.js (optional if using client-side API calls)
+- **Backend**: Spring Boot, Docker
 - **AI Integration**: Google Gemini
-- **PDF Generation**: jsPDF / html2pdf (assumed)
-- **Hosting**: Render (or GitHub Pages if static)
+- **PDF Generation**: iText7 Library
+- **Hosting**: Render
