@@ -1,5 +1,5 @@
-const api = 'http://localhost:8080/api';
-const geminiApi = 'http://localhost:8080/gemini';
+const api = 'https://fitsetgo.onrender.com/api';
+const geminiApi = 'https://fitsetgo.onrender.com/gemini';
 
 const age = document.getElementById('age');
 const height = document.getElementById('height');
