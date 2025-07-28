@@ -1,6 +1,7 @@
 # Fit Set Go
 
-Fit Set Go is a smart, interactive web application that calculates a user's maintenance calorie needs based on personal details such as age, height, weight, activity level, and fitness goals. It then generates a personalized meal plan using AI (Gemini) and allows users to download this plan as a PDF.
+Fit Set Go is a smart, interactive web application that calculates calories need to be consumed based by their personal details and their goals. We take information like age, height, weight, activity levels and custom dietary restrictions and based on it our app generates a proper meal plan from Monday to Sunday along with timing to consume, food to consume, it shows the macros it has, and also give the ingredients along with its quantity.
+Now a normal user will not go to microsoft word and copy paste that information, so we also solved that part for users by converting this generated meal plan with downloadable pdf.
 <img width="1919" height="865" alt="Screenshot 2025-07-26 143926" src="https://github.com/user-attachments/assets/d22ab2f7-e3a7-4d34-8ff9-6f010f30196c" />
 
 AI generated meal plan
