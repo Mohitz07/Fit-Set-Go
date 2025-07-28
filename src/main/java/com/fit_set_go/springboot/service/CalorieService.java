@@ -16,8 +16,8 @@ public class CalorieService {
     public double target(UserInput u) {
         double maintain = maintenance(u);
         return switch (u.getGoal()) {
-            case LOSE -> maintain - 500;           // ≈500 kcal deficit
-            case GAIN -> maintain + 300;           // ≈300 kcal surplus
+            case LOSE -> maintain - 200;           // ≈200 kcal deficit
+            case GAIN -> maintain + 200;           // ≈200 kcal surplus
             default -> maintain;
         };
     }
