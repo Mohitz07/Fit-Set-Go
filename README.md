@@ -13,19 +13,18 @@ Pdf format
 
 ## Features
 
-- Calculates maintenance calories
-- Uses Gemini AI to generate personalized meal plans
-- Exports the meal plan into a downloadable PDF
-- Supports both Veg and Non-Veg preferences (with custom dietary restrictions)
-- Clean, responsive dark-themed UI
-- Dockerized for easy deployment
+- Calculates calories needed to achieve his/her goals(Weight Loss/ Weight Gain).
+- Uses Gemini AI to generate personalized meal plans based on the user input given at the time of calorie calculation.
+- Supports both Veg and Non-Veg preferences (with custom dietary restrictions).
+- Exports the meal plan into a downloadable PDF.
+- Dockerized for easy deployment.
 
 ---
 
 ## Tech Stack
 
-- **Frontend**: HTML, CSS, JavaScript
 - **Backend**: Spring Boot, Docker
-- **AI Integration**: Google Gemini
+- **Frontend**: HTML, CSS, JavaScript
+- **AI Integration**: Google Gemini API
 - **PDF Generation**: iText7 Library
 - **Hosting**: Render
