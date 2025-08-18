@@ -28,4 +28,4 @@ Pdf format
 - **Frontend**: HTML, CSS, JavaScript
 - **AI Integration**: Google Gemini API
 - **PDF Generation**: iText7 Library
-- **Hosting**: Render
+- **Hosting**: Railway
