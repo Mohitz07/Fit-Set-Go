@@ -1,5 +1,5 @@
-const api = 'https://fitsetgo.onrender.com/api';
-const geminiApi = 'https://fitsetgo.onrender.com/gemini';
+const api = 'https://fitsetgo.up.railway.com/api';
+const geminiApi = 'https://fitsetgo.up.railway.com/gemini';
 
 const age = document.getElementById('age');
 const height = document.getElementById('height');
