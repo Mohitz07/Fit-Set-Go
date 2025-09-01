@@ -150,3 +150,370 @@ input:focus, select:focus {
   color: #c4cbcf;
   font-size: 1rem;
 }
+
+
+/* Essential mobile viewport fix */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* Mobile-first base improvements */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #181c23;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  color: #e7e9ec;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* All Mobile Devices: 320px - 480px */
+@media screen and (max-width: 480px) {
+  .wrapper {
+    padding: 0.8rem;
+    min-height: 100vh;
+    align-items: flex-start;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .card {
+    padding: 1rem;
+    margin: 0;
+    border-radius: 12px;
+    max-width: 100%;
+    width: 100%;
+    min-width: 280px; /* Ensures compatibility with 320px screens */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+    margin: 0.3rem 0 1rem;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  /* Stack all form elements vertically */
+  .form-row {
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  label {
+    flex: 1 1 100%;
+    margin-bottom: 0.6rem;
+    width: 100%;
+  }
+
+  /* Mobile-optimized inputs */
+  input, select, textarea {
+    font-size: 16px; /* Prevents iOS zoom */
+    padding: 0.8rem;
+    width: 100%;
+    border: 1px solid #38404f;
+    border-radius: 8px;
+    background: #293040;
+    color: #e7e9ec;
+    margin-top: 0.4rem;
+    min-height: 44px; /* Touch-friendly */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  textarea {
+    min-height: 80px;
+    resize: vertical;
+    font-family: inherit;
+  }
+
+  /* Mobile-friendly tabs */
+  .tabs {
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.4rem;
+    margin: 0.8rem 0 1rem;
+    width: 100%;
+  }
+
+  .tab-btn {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    min-height: 48px;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .tab-btn.active {
+    background: linear-gradient(to right, #4eb5f1, #2e9ad1);
+    color: #fff;
+    transform: none; /* Remove transform on mobile */
+  }
+
+  /* Radio group mobile layout */
+  .radio-group {
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  .diet-group {
+    width: 100%;
+    margin-bottom: 0.8rem;
+  }
+
+  .diet-group legend {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .radio {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  /* Mobile button improvements */
+  .primary-btn {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 1rem;
+    min-height: 48px;
+    margin-top: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .primary-btn:hover {
+    transform: none; /* Remove hover effects on mobile */
+  }
+
+  .primary-btn:active {
+    transform: scale(0.98);
+  }
+
+  /* Results and output */
+  .result-text {
+    font-size: 0.95rem;
+    margin-top: 0.8rem;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .gemini-text {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+  }
+
+  .recipe-output {
+    padding: 0.8rem;
+    margin-top: 0.8rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    border-radius: 8px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .recipe-output h4 {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
+  /* Tab panels */
+  .tab-panel {
+    width: 100%;
+  }
+
+  .tab-panel.active {
+    display: block;
+    animation: fadeInMobile 0.3s ease;
+  }
+
+  @keyframes fadeInMobile {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Recipe form specific */
+  #tab-recipes h3 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    text-align: center;
+  }
+
+  /* Loading states */
+  #loading, #recipe-loading {
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 0.5rem;
+  }
+}
+
+/* Extra small phones: 320px and below */
+@media screen and (max-width: 320px) {
+  .wrapper {
+    padding: 0.5rem;
+  }
+
+  .card {
+    padding: 0.8rem;
+    min-width: 300px;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+  }
+
+  input, select, textarea {
+    padding: 0.7rem;
+    font-size: 15px;
+  }
+
+  .primary-btn {
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .tab-btn {
+    padding: 0.7rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Large phones: 375px - 480px */
+@media screen and (min-width: 375px) and (max-width: 480px) {
+  .card {
+    padding: 1.2rem;
+  }
+
+  .form-row {
+    gap: 1rem;
+  }
+
+  .primary-btn {
+    padding: 1rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects and add touch feedback */
+  .tab-btn:hover {
+    background: transparent;
+    color: #9aadbe;
+  }
+
+  .tab-btn.active:hover {
+    background: linear-gradient(to right, #4eb5f1, #2e9ad1);
+    color: #fff;
+  }
+
+  .primary-btn:hover {
+    background: linear-gradient(to right, #4eb5f1, #2e9ad1);
+    transform: none;
+  }
+
+  /* Better touch targets */
+  input, select, textarea, .tab-btn, .primary-btn {
+    min-height: 44px;
+  }
+
+  /* iOS Safari specific fixes */
+  input[type="number"], input[type="text"], select, textarea {
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media screen and (max-width: 480px) and (orientation: landscape) {
+  .wrapper {
+    padding: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .card {
+    max-height: 85vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .tabs {
+    flex-direction: row;
+    margin: 0.5rem 0;
+  }
+
+  .tab-btn {
+    flex: 1;
+    padding: 0.6rem;
+  }
+}
+
+/* Accessibility improvements for mobile */
+@media screen and (max-width: 480px) {
+  /* Focus states for keyboard navigation */
+  input:focus, select:focus, textarea:focus, .tab-btn:focus, .primary-btn:focus {
+    outline: 2px solid #63bcff;
+    outline-offset: 2px;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .card {
+      border: 2px solid #fff;
+    }
+
+    input, select, textarea {
+      border: 2px solid #63bcff;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .tab-panel.active {
+      animation: none;
+    }
+
+    .primary-btn:active {
+      transform: none;
+    }
+  }
+}
