@@ -21,4 +21,3 @@ public class MyController {
         return calService.target(input);
     }
 }
-
