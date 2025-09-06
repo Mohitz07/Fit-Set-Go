@@ -55,8 +55,10 @@
 
     .nav-links {
       display: flex;
+      flex-direction: row;  /* Ensures links are side-by-side */
       gap: 0.5rem;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;    /* Prevents wrapping */
+      align-items: center;
     }
 
     .nav-btn {
@@ -531,4 +533,7 @@
       .form-input, .form-select, textarea {
         min-height: 48px;
       }
+    }
+    .main-content, .hero, .section {
+      margin-top: 64px; /* set this equal to your .navbar height  */
     }
