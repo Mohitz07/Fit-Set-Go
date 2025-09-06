@@ -250,10 +250,12 @@
     }
 
     .form-input, .form-select, textarea {
+      background: rgba(30, 41, 59, 0.9);     /* dark card background */
+      color: #F1F5F9;                        /* light text */
+      border: 1px solid #3B82F6;             /* blue border */
       padding: 1rem;
       border-radius: 12px;
       border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(30, 41, 59, 0.6);
       color: #F1F5F9;
       font-size: clamp(1rem, 3.5vw, 1rem);
       transition: all 0.3s ease;
