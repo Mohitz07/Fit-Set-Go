@@ -419,6 +419,9 @@
       .form-input, .form-select, textarea {
         padding: 0.875rem;
       }
+      .main-content, .hero, .section {
+          margin-top: 64px; /* Match the height of your fixed navbar */
+      }
     }
 
     /* Tablet and Small Desktop (481px - 768px) */
@@ -533,7 +536,4 @@
       .form-input, .form-select, textarea {
         min-height: 48px;
       }
-    }
-    .main-content, .hero, .section {
-      margin-top: 64px; /* set this equal to your .navbar height  */
     }
