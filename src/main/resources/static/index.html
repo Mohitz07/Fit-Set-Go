@@ -2,104 +2,169 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Fit Meal Planner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FitSetGo | Calorie Tracker & Recipe Generator</title>
+  <meta name="google-adsense-account" content="ca-pub-7590663002596838" />
   <link rel="stylesheet" href="styles.css" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7590663002596838" crossorigin="anonymous"></script>
-  <meta name="google-adsense-account" content="ca-pub-7590663002596838">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
-<body>
-<div class="wrapper">
-  <div class="card">
-    <h2>Fit Set Go</h2>
-    <p class="subtitle">Calculate your calories and get personalized meal plans</p>
-    <form id="form">
-      <div class="form-row">
-        <label>
-          Age (years)
-          <input type="number" id="age" placeholder="e.g. 25" min="10" max="120" required />
-        </label>
-        <label>
-          Height (cm)
-          <input type="number" id="height" placeholder="e.g. 170" min="50" max="300" required />
-        </label>
-        <label>
-          Weight (kg)
-          <input type="number" id="weight" placeholder="e.g. 70" min="20" max="500" required />
-        </label>
-      </div>
 
-      <div class="form-row">
-        <label>
-          Sex
-          <select id="sex" required>
-            <option value="">Select sex</option>
-            <option value="MALE">Male</option>
-            <option value="FEMALE">Female</option>
-          </select>
-        </label>
-        <label>
-          Activity Level
-          <select id="activity" required>
-            <option value="">Select activity level</option>
-            <option value="1.2">Sedentary (office job)</option>
-            <option value="1.375">Light (light exercise 1-3 days/week)</option>
-            <option value="1.55">Moderate (moderate exercise 3-5 days/week)</option>
-            <option value="1.725">Active (hard exercise 6-7 days/week)</option>
-            <option value="1.9">Very Active (physical job + exercise)</option>
-          </select>
-        </label>
-        <label>
-          Goal
-          <select id="goal" required>
-            <option value="">Select goal</option>
-            <option value="MAINTAIN">Maintain</option>
-            <option value="LOSE">Lose Weight</option>
-            <option value="GAIN">Gain Weight</option>
-          </select>
-        </label>
+  <body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">Fit Set Go</div>
+      <div class="nav-links">
+        <a href="#" class="nav-btn" onclick="showSection('home', this)">Home</a>
+        <a href="#" class="nav-btn" onclick="showSection('tracker', this)">Calorie Tracker</a>
+        <a href="#" class="nav-btn" onclick="showSection('recipes', this)">Recipe Generator</a>
       </div>
+    </div>
+  </nav>
 
-      <div class="form-row radio-group">
-        <fieldset class="diet-group">
-          <legend>Diet Preference</legend>
-          <label class="radio">
-            <input type="radio" name="diet" value="VEG" checked />
-            Veg
-          </label>
+  <!-- Hero Section -->
+  <section id="home" class="section active">
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Your AI Fitness Companion</h1>
+        <p>Transform your health journey with personalized calorie tracking, AI-powered meal plans, and custom recipes tailored to your lifestyle.</p>
+        <div class="cta-buttons">
+          <button class="btn btn-primary" onclick="showSection('tracker')">
+             Start Tracking
+          </button>
+          <button class="btn btn-secondary" onclick="showSection('recipes')">
+             Generate Recipe
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calorie Tracker Section -->
+  <section id="tracker" class="section">
+    <div class="container">
+      <div class="card animate-in">
+        <div class="card-header">
+          <h2 class="card-title">Calorie & Meal Planner</h2>
+          <p class="card-subtitle">Get your personalized daily calorie target and AI-generated meal plan</p>
+        </div>
+
+        <form id="calorie-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Age (years)</label>
+              <input type="number" class="form-input" id="age" placeholder="e.g. 25" min="10" max="120" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Height (cm)</label>
+              <input type="number" class="form-input" id="height" placeholder="e.g. 170" min="50" max="300" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Weight (kg)</label>
+              <input type="number" class="form-input" id="weight" placeholder="e.g. 70" min="20" max="500" required>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Sex</label>
+              <select class="form-select" id="sex" required>
+                <option value="">Select sex</option>
+                <option value="MALE">Male</option>
+                <option value="FEMALE">Female</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Activity Level</label>
+              <select class="form-select" id="activity" required>
+                <option value="">Select activity level</option>
+                <option value="1.2">Sedentary (office job)</option>
+                <option value="1.375">Light (light exercise 1-3 days/week)</option>
+                <option value="1.55">Moderate (moderate exercise 3-5 days/week)</option>
+                <option value="1.725">Active (hard exercise 6-7 days/week)</option>
+                <option value="1.9">Very Active (physical job + exercise)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Goal</label>
+              <select class="form-select" id="goal" required>
+                <option value="">Select goal</option>
+                <option value="MAINTAIN">Maintain Weight</option>
+                <option value="LOSE">Lose Weight</option>
+                <option value="GAIN">Gain Weight</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Diet Preference</label>
+            <div class="radio-group">
+              <label class="radio-item">
+                <input type="radio" name="diet" value="VEG" checked>
+                <span>Vegetarian</span>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="diet" value="NONVEG">
+                <span>Non-Vegetarian</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Custom Diet Preferences (optional)</label>
+            <input type="text" class="form-input" id="custom-diet" placeholder="e.g. No dairy on weekdays, prefer gluten-free">
+          </div>
           <br>
-          <label class="radio">
-            <input type="radio" name="diet" value="NONVEG" />
-            Non-Veg
-          </label>
-        </fieldset>
-        <label>
-          Custom Diet Preferences (optional)
-          <input type="text" id="custom-diet" placeholder="e.g. I Don't eat Non-Veg on Tuesday and Saturday" />
-        </label>
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+             Generate My Plan
+          </button>
+        </form>
+
+        <div id="calorie-loading" class="loading">
+          <p>🔮 Generating your personalized meal plan...</p>
+        </div>
+
+        <div id="calorie-result" style="display: none;">
+          <div class="result-card">
+            <div class="result-text" id="calorie-text"></div>
+            <button id="download-pdf" class="btn btn-secondary" style="display: none;">
+               Download PDF
+            </button>
+          </div>
+          <div id="meal-plan" class="meal-plan"></div>
+        </div>
       </div>
-<!--      <div class="form-row">-->
-<!--        <label>-->
-<!--          Custom Diet Preferences (optional)-->
-<!--          <input type="text" id="custom-diet" placeholder="e.g. I Don't eat Non-Veg on Tuesday and Saturday" />-->
-<!--        </label>-->
-<!--      </div>-->
+    </div>
+  </section>
 
-      <button type="submit" class="primary-btn">Calculate Calories</button>
+  <!-- Recipe Generator Section -->
+  <section id="recipes" class="section">
+    <div class="container">
+      <div class="card animate-in">
+        <div class="card-header">
+          <h2 class="card-title">AI Recipe Generator</h2>
+          <p class="card-subtitle">Turn your ingredients into delicious, personalized recipes</p>
+        </div>
 
-    </form>
+        <form id="recipe-form">
+          <div class="form-group">
+            <label class="form-label">What would you like to cook?</label>
+            <textarea class="form-input" id="recipe-input" rows="4" placeholder="e.g. I have chicken, rice, tomatoes, and spinach. Make me a healthy Italian dish around 400 calories that's vegetarian-friendly" required></textarea>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            🍳 Create Recipe
+          </button>
+        </form>
 
-    <p id="calories" class="result-text"></p>
-    <p id="loading" style="color: #888; font-style: italic; display: none; text-align: center">Generating your meal plan...</p>
-    <button id="pdfBtn" class="primary-btn" style="display: none;">Download Meal Plan PDF</button>
-    <div id="gemini-result" class="gemini-text"></div>
+        <div id="recipe-loading" class="loading">
+          <p>Crafting your perfect recipe...</p>
+        </div>
 
-
-  </div>
-</div>
-
-<script src="app.js"></script>
-</body>
+        <div id="recipe-output" class="recipe-result" style="display: none;"></div>
+      </div>
+    </div>
+  </section>
+  <script src="app.js"></script>
+  </body>
 </html>
