@@ -2,10 +2,6 @@
 
 Fit Set Go is a smart, interactive web application that calculates calories need to be consumed based by their personal details and their goals. We take information like age, height, weight, activity levels and custom dietary restrictions and based on it our app generates a proper meal plan from Monday to Sunday along with timing to consume, food to consume, it shows the macros it has, and also give the ingredients along with its quantity.
 Now a normal user will not go to microsoft word and copy paste that information, so we also solved that part for users by converting this generated meal plan with downloadable pdf.
-
-# Architecture
-![image0](https://github.com/user-attachments/assets/bd9d505f-c2f1-4aaf-ba0e-974a91d99e12)
-
 # Home
 <img width="1897" height="866" alt="image" src="https://github.com/user-attachments/assets/9a1dab4a-d542-438a-aa53-245d333727df" />
 
