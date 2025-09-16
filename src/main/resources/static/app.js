@@ -2,6 +2,56 @@
 const api = 'https://fitsetgo.up.railway.app/api';
 const geminiApi = 'https://fitsetgo.up.railway.app/gemini';
 
+//OAuth
+function openOAuthPopup() {
+  const width = 600;
+  const height = 600;
+  const left = (screen.width / 2) - (width / 2);
+  const top = (screen.height / 2) - (height / 2);
+
+  const popup = window.open(
+    '/oauth2/authorization/google',   // Spring Security OAuth2 default endpoint
+    'GoogleLogin',
+    `width=${width},height=${height},top=${top},left=${left}`
+  );
+
+  // Poll to check when popup closes
+  const interval = setInterval(() => {
+    if (popup.closed) {
+      clearInterval(interval);
+      window.location.reload(); // reload page to reflect login status
+    }
+  }, 1000);
+}
+
+//Load User Info
+async function loadUser() {
+  try {
+    const res = await fetch('/user/me');
+    if (!res.ok) return;
+
+    const data = await res.json();
+    if (data.name) {
+      document.getElementById('login-btn').style.display = 'none';
+      document.getElementById('user-info').style.display = 'flex';
+      document.getElementById('user-name').textContent = data.name;
+      document.getElementById('user-pic').src = data.picture;
+    }
+  } catch (err) {
+    console.error('Failed to load user', err);
+  }
+}
+
+// Call on page load
+loadUser();
+
+
+//AJAX Logout(without reload)
+async function logoutUser() {
+  await fetch('/logout', { method: 'POST' });
+  window.location.href = '/'; // or reload
+}
+
 // Navigation
 function showSection(sectionId, btn) {
   // Switch visible section
