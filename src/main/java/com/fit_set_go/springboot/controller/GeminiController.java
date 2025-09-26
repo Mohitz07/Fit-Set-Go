@@ -11,11 +11,11 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/gemini")
-@CrossOrigin
 public class GeminiController {
 
     private final GeminiService geminiService;
     private final MealPlanService mealPlanService;
+
     public GeminiController(GeminiService geminiService, MealPlanService mealPlanService) {
         this.geminiService = geminiService;
         this.mealPlanService = mealPlanService;
@@ -35,6 +35,7 @@ public class GeminiController {
             return ResponseEntity.status(500).body("Error: " + e.getMessage());
         }
     }
+
     @PostMapping("/pdf")
     public ResponseEntity<byte[]> generateGeminiPdf(@RequestBody Map<String, String> body) {
         String text = body.get("text");
@@ -47,7 +48,4 @@ public class GeminiController {
                 .contentType(MediaType.APPLICATION_PDF)
                 .body(pdf);
     }
-
-
 }
-
