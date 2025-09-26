@@ -10,7 +10,7 @@ function openOAuthPopup() {
   const top = (screen.height / 2) - (height / 2);
 
   const popup = window.open(
-    '/oauth2/authorization/google',   // Spring Security OAuth2 default endpoint
+    'https://fitsetgo.up.railway.app/oauth2/authorization/google',   // Spring Security OAuth2 default endpoint
     'GoogleLogin',
     `width=${width},height=${height},top=${top},left=${left}`
   );
