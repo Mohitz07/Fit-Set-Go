@@ -64,11 +64,11 @@ document.getElementById('calorie-form').addEventListener('submit', async (e) => 
     const dietReadable = data.diet === 'VEG' ? 'Vegetarian' : 'Vegetarian & Non-Vegetarian';
 
     // 1. Show calorie target immediately
-    calorieText.textContent = ` Your daily target: ${Math.round(target)} kcal (${dietReadable})`;
+    calorieText.textContent = ` Your daily target: ${Math.round(target)} calories (${dietReadable})`;
     result.style.display = 'block';
 
     // 2. Now generate Gemini prompt and meal plan
-    const prompt = `You are a fitness and nutrition expert. Based on the users profile, generate a Monday to Sunday meal plan that fits the calorie target and dietary preferences.
+    const prompt = `You are a fitness and nutrition expert. Please reply in plain text only. Do not use any markdown formatting or special characters like asterisks. Based on the users profile, generate a Monday to Sunday meal plan that fits the calorie target and dietary preferences.
                         Start directly with the day. Do not include any introduction or extra lines above the meal plan.
 
                     Instructions:
